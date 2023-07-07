@@ -1,4 +1,5 @@
-# Movie API
+# Movies API
+<a href="README_en.md">English Version</a><br>
 Esta aplicação consiste no uso da API OMDbApi para buscar uma lista de filmes e seus detalhes. Foi desenvolvida utilizando NestJS e Typescript.
 
 ## Rodando o projeto
