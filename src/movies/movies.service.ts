@@ -1,49 +1,20 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { SearchMoviesRequestDto } from './dtos/search-movies-request.dto';
-import { firstValueFrom } from 'rxjs';
 import { SearchMoviesResponseDto } from './dtos/search-movies-response.dto';
 import { errors } from './movies.error';
 import { FindMovieRequestDto } from './dtos/find-movie-request.dto';
 import { FindMovieResponseDto } from './dtos/find-movie-response.dto';
-
-interface SearchFunctionHttpResponse {
-  Search: HttpResponseMovie[];
-  totalResults: string;
-  Response: 'True' | 'False';
-}
-
-interface HttpResponseMovie {
-  imdbID: string;
-  Title: string;
-  Poster: string;
-  Actors: string;
-  imdbRating: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Response: 'True' | 'False';
-}
+import { IMoviesRepository } from './repositories/interfaces/IMoviesRepository';
 
 @Injectable()
 export class MoviesService {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(private readonly moviesRepository: IMoviesRepository) {}
 
   async search({
     query,
     page = 1,
   }: SearchMoviesRequestDto): Promise<SearchMoviesResponseDto> {
-    const { data } = await firstValueFrom(
-      this.httpService.get<SearchFunctionHttpResponse>(process.env.API_PATH, {
-        params: {
-          apikey: process.env.API_KEY,
-          type: 'movie',
-          s: query,
-          page,
-        },
-      }),
-    );
+    const data = await this.moviesRepository.search(query, page);
 
     if (data.Response === 'False') {
       throw new NotFoundException(errors.MOVIES_NOT_FOUND);
@@ -62,14 +33,7 @@ export class MoviesService {
   async findMovie({
     imdbID,
   }: FindMovieRequestDto): Promise<FindMovieResponseDto> {
-    const { data } = await firstValueFrom(
-      this.httpService.get<HttpResponseMovie>(process.env.API_PATH, {
-        params: {
-          apikey: process.env.API_KEY,
-          i: imdbID,
-        },
-      }),
-    );
+    const data = await this.moviesRepository.findMovie(imdbID);
 
     if (data.Response === 'False') {
       throw new NotFoundException(errors.MOVIES_NOT_FOUND);
