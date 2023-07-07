@@ -23,6 +23,7 @@ interface HttpResponseMovie {
   Runtime: string;
   Genre: string;
   Director: string;
+  Response: 'True' | 'False';
 }
 
 @Injectable()
@@ -70,7 +71,7 @@ export class MoviesService {
       }),
     );
 
-    if (data === undefined) {
+    if (data.Response === 'False') {
       throw new NotFoundException(errors.MOVIES_NOT_FOUND);
     }
 

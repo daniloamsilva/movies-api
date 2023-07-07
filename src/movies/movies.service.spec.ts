@@ -75,5 +75,13 @@ describe('MoviesService', () => {
       const response = await service.findMovie({ imdbID: 'tt0372784' });
       expect(response.title).toEqual('Batman Begins');
     });
+
+    it('should not be able to find a movie with empty imdbID', async () => {
+      await expect(
+        service.findMovie({
+          imdbID: '',
+        }),
+      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
+    });
   });
 });
