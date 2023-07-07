@@ -4,6 +4,8 @@ import { SearchMoviesRequestDto } from './dtos/search-movies-request.dto';
 import { firstValueFrom } from 'rxjs';
 import { SearchMoviesResponseDto } from './dtos/search-movies-response.dto';
 import { errors } from './movies.error';
+import { FindMovieRequestDto } from './dtos/find-movie-request.dto';
+import { FindMovieResponseDto } from './dtos/find-movie-response.dto';
 
 interface SearchFunctionHttpResponse {
   Search: HttpResponseMovie[];
@@ -12,9 +14,15 @@ interface SearchFunctionHttpResponse {
 }
 
 interface HttpResponseMovie {
-  Title: string;
   imdbID: string;
+  Title: string;
   Poster: string;
+  Actors: string;
+  imdbRating: string;
+  Released: string;
+  Runtime: string;
+  Genre: string;
+  Director: string;
 }
 
 @Injectable()
@@ -47,6 +55,35 @@ export class MoviesService {
         poster: movie.Poster === 'N/A' ? null : movie.Poster,
       })),
       totalResults: parseInt(data.totalResults),
+    };
+  }
+
+  async findMovie({
+    imdbID,
+  }: FindMovieRequestDto): Promise<FindMovieResponseDto> {
+    const { data } = await firstValueFrom(
+      this.httpService.get<HttpResponseMovie>(process.env.API_PATH, {
+        params: {
+          apikey: process.env.API_KEY,
+          i: imdbID,
+        },
+      }),
+    );
+
+    if (data === undefined) {
+      throw new NotFoundException(errors.MOVIES_NOT_FOUND);
+    }
+
+    return {
+      title: data.Title,
+      imdbId: data.imdbID,
+      poster: data.Poster === 'N/A' ? null : data.Poster,
+      actors: data.Actors.split(', '),
+      rating: parseFloat(data.imdbRating),
+      released: data.Released,
+      runtime: data.Runtime,
+      genres: data.Genre.split(', '),
+      director: data.Director,
     };
   }
 }
