@@ -4,6 +4,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { errors } from './movies.error';
 import { NotFoundException } from '@nestjs/common';
+import { IMoviesRepository } from './repositories/interfaces/IMoviesRepository';
+import { MoviesRepository } from './repositories/in-memory/MoviesRepository';
 
 describe('MoviesService', () => {
   let service: MoviesService;
@@ -11,7 +13,13 @@ describe('MoviesService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot(), HttpModule],
-      providers: [MoviesService],
+      providers: [
+        MoviesService,
+        {
+          provide: IMoviesRepository,
+          useClass: MoviesRepository,
+        },
+      ],
     }).compile();
 
     service = module.get<MoviesService>(MoviesService);
@@ -45,7 +53,7 @@ describe('MoviesService', () => {
 
     it('should not be able to search a list of movies in a page greater than the available', async () => {
       const pageOneResponse = await service.search({
-        query: 'spiderman',
+        query: 'Batman',
         page: 1,
       });
 
@@ -54,7 +62,7 @@ describe('MoviesService', () => {
 
       await expect(
         service.search({
-          query: 'spiderman',
+          query: 'Batman',
           page: numberPageGreaterThanAvailable,
         }),
       ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));

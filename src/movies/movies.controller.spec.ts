@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 import { errors } from './movies.error';
 import { NotFoundException } from '@nestjs/common';
+import { IMoviesRepository } from './repositories/interfaces/IMoviesRepository';
+import { MoviesRepository } from './repositories/implementations/MoviesRepository';
 
 describe('MoviesController', () => {
   let controller: MoviesController;
@@ -13,7 +15,13 @@ describe('MoviesController', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot(), HttpModule],
       controllers: [MoviesController],
-      providers: [MoviesService],
+      providers: [
+        MoviesService,
+        {
+          provide: IMoviesRepository,
+          useClass: MoviesRepository,
+        },
+      ],
     }).compile();
 
     controller = module.get<MoviesController>(MoviesController);
