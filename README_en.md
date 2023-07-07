@@ -1,4 +1,4 @@
-# Movie API
+# Movies API
 This application utilizes the OMDbApi to search for a list of movies and their details. It has been developed using NestJS and TypeScript.
 
 ## Running the project
