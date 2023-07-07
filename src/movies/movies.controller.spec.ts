@@ -3,6 +3,8 @@ import { MoviesController } from './movies.controller';
 import { MoviesService } from './movies.service';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { errors } from './movies.error';
+import { NotFoundException } from '@nestjs/common';
 
 describe('MoviesController', () => {
   let controller: MoviesController;
@@ -34,6 +36,17 @@ describe('MoviesController', () => {
       expect(pageOneResponse.movies[0].title).not.toEqual(
         pageTwoResponse.movies[0].title,
       );
+    });
+
+    it('should not be able to search a list of movies in a page greater than the available', async () => {
+      const pageOneResponse = await controller.search('spiderman', 1);
+
+      const numberPageGreaterThanAvailable =
+        pageOneResponse.totalResults / 10 + 1;
+
+      await expect(
+        controller.search('spiderman', numberPageGreaterThanAvailable),
+      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
     });
   });
 });
