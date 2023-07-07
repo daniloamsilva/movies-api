@@ -1,6 +1,8 @@
 import { Movie } from '../entities/movie.entity';
 
 export interface SearchMoviesResponseDto {
-  movies: Movie[];
+  movies: MovieResponseDto[];
   totalResults: number;
 }
+
+type MovieResponseDto = Pick<Movie, 'imdbId' | 'title' | 'poster'>;
