@@ -25,7 +25,7 @@ npm run start:dev
 - `GET /movies` - Realiza uma busca de filmes utilizando os parâmetros query e page como query params.
 - `GET /movies/:imdbID` - Busca os detalhes de um filme específico com base no seu imdbID.
 
-## Testes automátizados
+## Testes automatizados
 Para executar os testes automatizados, utilize o seguinte comando:
 ```shell
 npm run test
