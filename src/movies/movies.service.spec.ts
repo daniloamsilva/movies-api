@@ -83,5 +83,13 @@ describe('MoviesService', () => {
         }),
       ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
     });
+
+    it('should not be able to find a movie with a non-existent imdbID', async () => {
+      await expect(
+        service.findMovie({
+          imdbID: 'wrongImdbID',
+        }),
+      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
+    });
   });
 });

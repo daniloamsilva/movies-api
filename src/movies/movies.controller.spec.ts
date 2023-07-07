@@ -61,5 +61,17 @@ describe('MoviesController', () => {
       const response = await controller.findMovie('tt0372784');
       expect(response.title).toEqual('Batman Begins');
     });
+
+    it('should not be able to find a movie with empty imdbID', async () => {
+      await expect(controller.findMovie('')).rejects.toEqual(
+        new NotFoundException(errors.MOVIES_NOT_FOUND),
+      );
+    });
+
+    it('should not be able to find a movie with a non-existent imdbID', async () => {
+      await expect(controller.findMovie('wrongImdbID')).rejects.toEqual(
+        new NotFoundException(errors.MOVIES_NOT_FOUND),
+      );
+    });
   });
 });
