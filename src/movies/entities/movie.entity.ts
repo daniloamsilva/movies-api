@@ -8,4 +8,5 @@ export class Movie {
   runtime: string;
   genres: string[];
   director: string;
+  plot: string;
 }

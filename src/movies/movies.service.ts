@@ -49,6 +49,7 @@ export class MoviesService {
       runtime: data.Runtime,
       genres: data.Genre.split(', '),
       director: data.Director,
+      plot: data.Plot,
     };
   }
 }
