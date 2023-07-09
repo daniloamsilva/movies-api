@@ -14,6 +14,7 @@ export interface HttpResponseMovie {
   Runtime: string;
   Genre: string;
   Director: string;
+  Plot: string;
   Response: 'True' | 'False';
 }
 

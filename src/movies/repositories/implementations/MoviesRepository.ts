@@ -35,6 +35,7 @@ export class MoviesRepository implements IMoviesRepository {
         params: {
           apikey: process.env.API_KEY,
           i: imdbID,
+          plot: 'full',
         },
       }),
     );

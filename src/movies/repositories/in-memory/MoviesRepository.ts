@@ -27,6 +27,7 @@ export class MoviesRepository implements IMoviesRepository {
       totalResults: this.repository.length.toString(),
     });
   }
+
   findMovie(imdbID: string): Promise<HttpResponseMovie> {
     const data = this.repository.find((movie) => movie.imdbID === imdbID);
 

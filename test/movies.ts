@@ -12,6 +12,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '140 min',
     Genre: 'Action, Crime, Drama',
     Director: 'Christopher Nolan',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -25,6 +26,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '151 min',
     Genre: 'Action, Adventure, Sci-Fi',
     Director: 'Zack Snyder',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -38,6 +40,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '176 min',
     Genre: 'Action, Crime, Drama',
     Director: 'Matt Reeves',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -51,6 +54,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '126 min',
     Genre: 'Action, Adventure',
     Director: 'Tim Burton',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -64,6 +68,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '126 min',
     Genre: 'Action, Crime, Fantasy',
     Director: 'Tim Burton',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -77,6 +82,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '125 min',
     Genre: 'Action, Sci-Fi',
     Director: 'Joel Schumacher',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -90,6 +96,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '121 min',
     Genre: 'Action, Adventure',
     Director: 'Joel Schumacher',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -103,6 +110,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '104 min',
     Genre: 'Animation, Action, Adventure',
     Director: 'Chris McKay',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -116,6 +124,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '104 min',
     Genre: 'Animation, Action, Adventure',
     Director: 'Chris McKay',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -129,6 +138,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '76 min',
     Genre: 'Animation, Action, Crime',
     Director: 'Sam Liu',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -144,6 +154,7 @@ export const movies: HttpResponseMovie[] = [
     Genre: 'Animation, Action, Crime, Drama, Mystery, Sci-Fi, Thriller',
 
     Director: 'Brandon Vietti',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -157,6 +168,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '76 min',
     Genre: 'Animation, Action, Crime, Drama, Thriller',
     Director: 'Jay Oliva',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -170,6 +182,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '76 min',
     Genre: 'Animation, Action, Adventure',
     Director: 'Eric Radomski, Kevin Altieri, Boyd Kirkland',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -183,6 +196,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '76 min',
     Genre: 'Animation, Action, Crime, Drama, Horror, Sci-Fi, Thriller',
     Director: 'Jay Oliva',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -196,6 +210,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '105 min',
     Genre: 'Action, Adventure, Comedy',
     Director: 'Leslie H. Martinson',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -209,6 +224,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '64 min',
     Genre: 'Animation, Action, Crime, Drama, Thriller',
     Director: 'Sam Liu, Lauren Montgomery',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -222,6 +238,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '76 min',
     Genre: 'Animation, Action, Adventure, Crime, Sci-Fi, Thriller',
     Director: 'Jay Oliva, Ethan Spaulding',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -236,6 +253,7 @@ export const movies: HttpResponseMovie[] = [
     Genre: 'Animation, Action, Crime, Sci-Fi, Thriller',
     Director:
       'Yasuhiro Aoki, Futoshi Higashide, Toshiyuki Kubooka, Hiroshi Morioka, Jong-Sik Nam, Shôjirô Nishimi, Yûichirô Hayashi(co-Director)',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -249,6 +267,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '74 min',
     Genre: 'Animation, Action, Adventure, Crime, Drama, Fantasy, Mystery',
     Director: 'Ethan Spaulding',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
   {
@@ -262,6 +281,7 @@ export const movies: HttpResponseMovie[] = [
     Runtime: '78 min',
     Genre: 'Animation, Action, Adventure, Sci-Fi',
     Director: 'Lauren Montgomery',
+    Plot: 'placeholder plot',
     Response: 'True',
   },
 ];
