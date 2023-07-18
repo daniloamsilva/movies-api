@@ -17,7 +17,10 @@ export class MoviesService {
     const data = await this.moviesRepository.search(query, page);
 
     if (data.Response === 'False') {
-      throw new NotFoundException(errors.MOVIES_NOT_FOUND);
+      return {
+        movies: [],
+        totalResults: 0,
+      };
     }
 
     return {

@@ -60,21 +60,19 @@ describe('MoviesService', () => {
       const numberPageGreaterThanAvailable =
         pageOneResponse.totalResults / 10 + 1;
 
-      await expect(
-        service.search({
-          query: 'Batman',
-          page: numberPageGreaterThanAvailable,
-        }),
-      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
+      const response = await service.search({
+        query: 'Batman',
+        page: numberPageGreaterThanAvailable,
+      });
+
+      expect(response.movies.length).toEqual(0);
+      expect(response.totalResults).toEqual(0);
     });
 
     it('should not be able to search a list of movies with empty query', async () => {
-      await expect(
-        service.search({
-          query: '',
-          page: 1,
-        }),
-      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
+      const response = await service.search({ query: '', page: 1 });
+      expect(response.movies.length).toEqual(0);
+      expect(response.totalResults).toEqual(0);
     });
   });
 

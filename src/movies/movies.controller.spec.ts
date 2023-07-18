@@ -52,15 +52,19 @@ describe('MoviesController', () => {
       const numberPageGreaterThanAvailable =
         pageOneResponse.totalResults / 10 + 1;
 
-      await expect(
-        controller.search('spiderman', numberPageGreaterThanAvailable),
-      ).rejects.toEqual(new NotFoundException(errors.MOVIES_NOT_FOUND));
+      const response = await controller.search(
+        'spiderman',
+        numberPageGreaterThanAvailable,
+      );
+
+      expect(response.movies.length).toEqual(0);
+      expect(response.totalResults).toEqual(0);
     });
 
     it('should not be able to search a list of movies with empty query', async () => {
-      await expect(controller.search('', 1)).rejects.toEqual(
-        new NotFoundException(errors.MOVIES_NOT_FOUND),
-      );
+      const response = await controller.search('', 1);
+      expect(response.movies.length).toEqual(0);
+      expect(response.totalResults).toEqual(0);
     });
   });
 
