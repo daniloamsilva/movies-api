@@ -18,6 +18,8 @@ export class MoviesService {
 
     if (data.Response === 'False') {
       return {
+        search: query,
+        page,
         movies: [],
         totalResults: 0,
       };
@@ -29,6 +31,8 @@ export class MoviesService {
         imdbId: movie.imdbID,
         poster: movie.Poster === 'N/A' ? null : movie.Poster,
       })),
+      search: query,
+      page,
       totalResults: parseInt(data.totalResults),
     };
   }
